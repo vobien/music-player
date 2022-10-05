@@ -1,0 +1,141 @@
+:root {
+    --primary-color: #ec1f55;
+    --text-color: #333;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+html {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+
+    line-height: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.player {
+    position: relative;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.dashboard {
+    background-color: white;
+    padding: 1.5rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 50rem;
+    border-bottom: 1px solid #ddd9d9;
+}
+
+.dashboard header {
+    text-align: center;
+}
+
+.dashboard header h2 {
+    color: var(--primary-color);
+}
+
+.dashboard header h1 {
+    color: var(--text-color);
+    padding-bottom: 1rem;
+}
+
+.cd {
+    width: 25rem;
+    display: flex;
+    margin: auto;
+}
+
+.cd-thumb {
+    width: 100%;
+    padding-top: 100%;
+    background-size: cover;
+    border-radius: 50%;
+    background-color: #333;
+    margin: auto;
+}
+
+.control {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+    align-items: center;
+}
+
+.control .btn {
+    font-size: 3rem;
+    color: #666;
+}
+
+.control .btn-toggle-play {
+    font-size: 6rem;
+    color: var(--primary-color);
+}
+
+.control .btn-toggle-play .btn-play {
+
+}
+
+.control .btn-toggle-play .btn-pause {
+    display: none;
+}
+
+.dashboard #progress {
+    width: 100%;
+}
+
+.playlist {
+    margin-top: 47rem;
+    padding: 1rem;
+}
+
+.song {
+    display: flex;
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.song .thumb {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.song .body {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 3;
+    padding-left: 2rem;
+}
+
+.song .title {
+    color: var(--text-color);
+    font-size: 1.8rem;
+}
+
+.song .author {
+    color: #999;
+    font-size: 1.2rem;
+}
+
+.song .option {
+    color: #999;
+    font-size: 3rem;
+}
