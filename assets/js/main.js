@@ -14,11 +14,14 @@ const btnRandom = $(".btn-random");
 const btnRepeat = $(".btn-repeat");
 const playlist = $(".playlist");
 
+const PLAYER_STORAGE_KEY = "music-player";
+
 const app = {
   currentSongIndex: 0,
   isPlaying: false,
   isRandom: false,
   isRepeat: false,
+  configs: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
   songs: [
     {
       title: "Em Sẽ Không Về (New Version)",
@@ -98,6 +101,13 @@ const app = {
         "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/9/8/6/c/986ccfe2a965e11b4c967745a0fefe96.jpg",
     },
   ],
+  setConfigs(configs) {
+    localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(configs));
+  },
+  loadConfigs() {
+    this.isRepeat = this.configs.isRepeat || false;
+    this.isRandom = this.configs.isRandom || false;
+  },
   defineProperties() {
     Object.defineProperty(this, "currentSong", {
       get() {
@@ -140,6 +150,11 @@ const app = {
     // add event handler for btn repeat
     btnRepeat.onclick = function () {
       _this.isRepeat = !_this.isRepeat;
+
+      // set config to local storage
+      _this.configs["isRepeat"] = _this.isRepeat;
+      _this.setConfigs(_this.configs);
+
       btnRepeat.classList.toggle("active", _this.isRepeat);
     };
 
@@ -176,6 +191,11 @@ const app = {
     // click random song
     btnRandom.onclick = function () {
       _this.isRandom = !_this.isRandom;
+
+      // set config to local storage
+      _this.configs["isRandom"] = _this.isRandom;
+      _this.setConfigs(_this.configs);
+
       btnRandom.classList.toggle("active", _this.isRandom);
     };
 
@@ -297,6 +317,11 @@ const app = {
     }, 500);
   },
   start() {
+    this.loadConfigs();
+    console.log(this.configs, this.isRandom);
+    btnRandom.classList.toggle("active", this.isRandom);
+    btnRepeat.classList.toggle("active", this.isRepeat);
+
     this.defineProperties();
 
     this.handleEvents();
