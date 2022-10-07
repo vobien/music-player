@@ -318,7 +318,6 @@ const app = {
   },
   start() {
     this.loadConfigs();
-    console.log(this.configs, this.isRandom);
     btnRandom.classList.toggle("active", this.isRandom);
     btnRepeat.classList.toggle("active", this.isRepeat);
 
